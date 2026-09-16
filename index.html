@@ -3,62 +3,206 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paris Foot Booking ⚽</title>
+  <title>Paris Foot Booking ⚽ | Réservez vos terrains</title>
   <link rel="stylesheet" href="style.css">
+  <!-- FontAwesome للرموز الأنيقة -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
 
-  <header>
-    <h1>Paris Foot Booking ⚽</h1>
-    <p>Réservez votre terrain de football à Paris en quelques clics</p>
+  <!-- Header & Hero Section -->
+  <header class="hero">
+    <div class="hero-overlay">
+      <nav class="navbar">
+        <div class="logo"><i class="fa-solid fa-circle-play"></i> PARIS <span>FOOT</span></div>
+        <div class="nav-links">
+          <a href="#terrains">Terrains</a>
+          <a href="#my-bookings">Mes Réservations</a>
+        </div>
+      </nav>
+      <div class="hero-content">
+        <h1>Réservez votre terrain de foot à Paris ⚽</h1>
+        <p>Plus de 10 complexes disponibles. Réservez en 2 minutes avec confirmation immédiate.</p>
+        
+        <!-- Search Bar -->
+        <div class="search-bar">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" onkeyup="filterTerrains()" placeholder="Rechercher un terrain ou un arrondissement...">
+        </div>
+      </div>
+    </div>
   </header>
 
-  <main>
-    <h2>Terrains disponibles</h2>
+  <main class="container">
+    <h2 class="section-title">Terrains Disponibles</h2>
 
-    <div class="terrains">
-      <div class="card">
-        <div class="card-header">
-          <h3>Urban Soccer Paris</h3>
-          <span class="badge">Populaire</span>
+    <!-- Terrains Grid -->
+    <div class="terrains-grid" id="terrainsGrid">
+
+      <!-- Card 1 -->
+      <div class="card" data-name="urban soccer paris 13" data-price="10">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=800&q=80');">
+          <span class="badge popular">Populaire 🔥</span>
         </div>
-        <p class="location">📍 Paris 13ème</p>
-        <p class="price">💶 <b>10 €</b> / personne</p>
-        <div class="booking-inputs">
-          <label for="date-1">Date :</label>
-          <input type="date" id="date-1">
+        <div class="card-body">
+          <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (120 avis)</div>
+          <h3>Urban Soccer Paris 13</h3>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Paris 13ème • Indoor 5v5</p>
+          <div class="card-footer-info">
+            <span class="price"><b>10 €</b> / pers</span>
+            <button class="btn-primary" onclick="openBookingModal('Urban Soccer Paris 13', 10)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
         </div>
-        <button onclick="reserver('Urban Soccer Paris', 'date-1')">
-          Réserver maintenant
-        </button>
       </div>
 
-      <div class="card">
-        <div class="card-header">
-          <h3>Football Center Paris</h3>
-          <span class="badge">Indoor</span>
+      <!-- Card 2 -->
+      <div class="card" data-name="football center 19" data-price="12">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=800&q=80');">
+          <span class="badge premium">Synthétique HD ✨</span>
         </div>
-        <p class="location">📍 Paris 19ème</p>
-        <p class="price">💶 <b>12 €</b> / personne</p>
-        <div class="booking-inputs">
-          <label for="date-2">Date :</label>
-          <input type="date" id="date-2">
+        <div class="card-body">
+          <div class="rating"><i class="fa-solid fa-star"></i> 4.8 (85 avis)</div>
+          <h3>Football Center Paris 19</h3>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Paris 19ème • Outdoor 7v7</p>
+          <div class="card-footer-info">
+            <span class="price"><b>12 €</b> / pers</span>
+            <button class="btn-primary" onclick="openBookingModal('Football Center Paris 19', 12)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
         </div>
-        <button onclick="reserver('Football Center Paris', 'date-2')">
-          Réserver maintenant
-        </button>
       </div>
+
+      <!-- Card 3 -->
+      <div class="card" data-name="le temple du foot bercy" data-price="11">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80');">
+          <span class="badge">Couvert 🌧️</span>
+        </div>
+        <div class="card-body">
+          <div class="rating"><i class="fa-solid fa-star"></i> 4.7 (94 avis)</div>
+          <h3>Le Temple du Foot Bercy</h3>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Paris 12ème • Indoor 5v5</p>
+          <div class="card-footer-info">
+            <span class="price"><b>11 €</b> / pers</span>
+            <button class="btn-primary" onclick="openBookingModal('Le Temple du Foot Bercy', 11)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="card" data-name="five arena boulogne" data-price="14">
+        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=800&q=80');">
+          <span class="badge popular">Climatisé ❄️</span>
+        </div>
+        <div class="card-body">
+          <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (210 avis)</div>
+          <h3>Five Arena Boulogne</h3>
+          <p class="location"><i class="fa-solid fa-location-dot"></i> Boulogne-Billancourt • 5v5</p>
+          <div class="card-footer-info">
+            <span class="price"><b>14 €</b> / pers</span>
+            <button class="btn-primary" onclick="openBookingModal('Five Arena Boulogne', 14)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
     </div>
 
-    <!-- قسم عرض الحجوزات المؤكدة -->
-    <div id="confirmation-section" class="confirmation-box" style="display: none;">
-      <h3>Vos Réservations 📝</h3>
-      <ul id="reservations-list"></ul>
-    </div>
+    <!-- Section Réservations Confirmées -->
+    <section id="my-bookings" class="bookings-section">
+      <h2><i class="fa-solid fa-ticket"></i> Mes Réservations Confirmées</h2>
+      <div id="bookingsList" class="bookings-list">
+        <p class="empty-msg">Aucune réservation pour le moment.</p>
+      </div>
+    </section>
   </main>
 
+  <!-- MODAL DE RESERVATION & PAIEMENT -->
+  <div class="modal-overlay" id="bookingModal">
+    <div class="modal-card">
+      <button class="modal-close" onclick="closeBookingModal()">&times;</button>
+      
+      <div id="modalStep1">
+        <h3><i class="fa-regular fa-calendar-check"></i> Réservation - <span id="modalTerrainName"></span></h3>
+        <p class="modal-sub">Remplissez les détails du match :</p>
+        
+        <form id="bookingForm" onsubmit="goToPayment(event)">
+          <div class="input-group">
+            <label><i class="fa-solid fa-user"></i> Nom complet</label>
+            <input type="text" id="userName" placeholder="Ex: Mohamed Lab" required>
+          </div>
+
+          <div class="form-row">
+            <div class="input-group">
+              <label><i class="fa-solid fa-calendar"></i> Date</label>
+              <input type="date" id="bookDate" required>
+            </div>
+            <div class="input-group">
+              <label><i class="fa-solid fa-clock"></i> Heure</label>
+              <select id="bookTime" required>
+                <option value="14:00">14:00</option>
+                <option value="16:00">16:00</option>
+                <option value="18:00">18:00</option>
+                <option value="20:00">20:00</option>
+                <option value="22:00">22:00</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label><i class="fa-solid fa-users"></i> Nombre de joueurs</label>
+            <input type="number" id="playerCount" value="10" min="1" max="14" oninput="updateTotalPrice()" required>
+          </div>
+
+          <div class="total-box">
+            <span>Total à payer :</span>
+            <strong id="totalAmount">0 €</strong>
+          </div>
+
+          <button type="submit" class="btn-primary btn-block">Passer au Paiement <i class="fa-solid fa-credit-card"></i></button>
+        </form>
+      </div>
+
+      <!-- Step 2: Paiement -->
+      <div id="modalStep2" style="display: none;">
+        <h3><i class="fa-solid fa-lock"></i> Paiement Sécurisé</h3>
+        <p class="modal-sub">Montant : <strong id="payAmount"></strong></p>
+
+        <div class="payment-methods">
+          <label class="pay-option active">
+            <input type="radio" name="payMethod" value="cb" checked>
+            <i class="fa-solid fa-credit-card"></i> Carte Bancaire
+          </label>
+          <label class="pay-option">
+            <input type="radio" name="payMethod" value="apple">
+            <i class="fa-brands fa-apple"></i> Apple Pay
+          </label>
+        </div>
+
+        <form id="payForm" onsubmit="processPayment(event)">
+          <div class="input-group">
+            <label>Numéro de carte</label>
+            <input type="text" placeholder="4532 •••• •••• 8921" maxlength="19" required>
+          </div>
+          <div class="form-row">
+            <div class="input-group">
+              <label>Expire</label>
+              <input type="text" placeholder="MM/YY" maxlength="5" required>
+            </div>
+            <div class="input-group">
+              <label>CVC</label>
+              <input type="password" placeholder="123" maxlength="3" required>
+            </div>
+          </div>
+
+          <button type="submit" class="btn-success btn-block" id="payBtn">
+            Payer & Confirmer <i class="fa-solid fa-check-circle"></i>
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
   <footer>
-    <p>© 2026 Paris Foot Booking — Tous droits réservés</p>
+    <p>© 2026 Paris Foot Booking — Développé avec ❤️ pour les passionnés du ballon rond.</p>
   </footer>
 
   <script src="script.js"></script>
