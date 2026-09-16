@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paris Foot Booking ⚽</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header>
+    <h1>Paris Foot Booking ⚽</h1>
+    <p>Réservez votre terrain de football à Paris en quelques clics</p>
+  </header>
+
+  <main>
+    <h2>Terrains disponibles</h2>
+
+    <div class="terrains">
+      <div class="card">
+        <div class="card-header">
+          <h3>Urban Soccer Paris</h3>
+          <span class="badge">Populaire</span>
+        </div>
+        <p class="location">📍 Paris 13ème</p>
+        <p class="price">💶 <b>10 €</b> / personne</p>
+        <div class="booking-inputs">
+          <label for="date-1">Date :</label>
+          <input type="date" id="date-1">
+        </div>
+        <button onclick="reserver('Urban Soccer Paris', 'date-1')">
+          Réserver maintenant
+        </button>
+      </div>
+
+      <div class="card">
+        <div class="card-header">
+          <h3>Football Center Paris</h3>
+          <span class="badge">Indoor</span>
+        </div>
+        <p class="location">📍 Paris 19ème</p>
+        <p class="price">💶 <b>12 €</b> / personne</p>
+        <div class="booking-inputs">
+          <label for="date-2">Date :</label>
+          <input type="date" id="date-2">
+        </div>
+        <button onclick="reserver('Football Center Paris', 'date-2')">
+          Réserver maintenant
+        </button>
+      </div>
+    </div>
+
+    <!-- قسم عرض الحجوزات المؤكدة -->
+    <div id="confirmation-section" class="confirmation-box" style="display: none;">
+      <h3>Vos Réservations 📝</h3>
+      <ul id="reservations-list"></ul>
+    </div>
+  </main>
+
+  <footer>
+    <p>© 2026 Paris Foot Booking — Tous droits réservés</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
