@@ -1,815 +1,750 @@
 
-:root {
-  --bg: #090e13;
-  --surface: #111a22;
-  --surface-hover: #18252e;
-  --green: #10b981;
-  --green-dark: #059669;
-  --white: #f8fafc;
-  --muted: #94a3b8;
-  --border: #25323d;
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  font-family: 'Inter', sans-serif;
-  background: var(--bg);
-  color: var(--white);
-  line-height: 1.6;
-}
-
-[hidden] {
-  display: none !important;
-}
-
-button, input, select {
-  font: inherit;
-}
-
-button, a, input, select {
-  -webkit-tap-highlight-color: transparent;
-}
-
-button, a {
-  cursor: pointer;
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-button {
-  border: none;
-}
-
-h1, h2, h3 {
-  line-height: 1.2;
-}
-
-.muted {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.eyebrow {
-  color: var(--green);
-  font-size: 11px;
-  font-weight: 800;
-  letter-spacing: 2.5px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  border-radius: 12px;
-  padding: 13px 20px;
-  font-weight: 700;
-  font-size: 14px;
-  transition: all .25s ease;
-}
-
-.btn:hover {
-  transform: translateY(-2px);
-}
-
-.btn:disabled {
-  opacity: .5;
-  cursor: wait;
-}
-
-.primary {
-  background: var(--green);
-  color: #041810;
-}
-
-.primary:hover {
-  background: #34d399;
-  box-shadow: 0 8px 30px #10b98130;
-}
-
-.outline {
-  background: transparent;
-  border: 1px solid var(--border);
-  color: var(--white);
-}
-
-.outline:hover {
-  border-color: var(--green);
-}
-
-.full {
-  width: 100%;
-  margin-top: 15px;
-}
-
-/* AUTHENTIFICATION */
-
-.auth-page {
-  min-height: 100vh;
-  display: grid;
-  grid-template-columns: 1.1fr 1fr;
-}
-
-.auth-visual {
-  min-height: 100vh;
-  padding: 55px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  background:
-    linear-gradient(145deg, #041a14bb, #090e13f0),
-    url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=1600&q=85')
-    center/cover;
-}
-
-.auth-brand, .brand {
-  font-size: 23px;
-  font-weight: 900;
-  letter-spacing: -1px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.auth-brand i, .brand i {
-  color: var(--green);
-  margin-right: 6px;
-}
-
-.auth-brand span, .brand span {
-  color: var(--green);
-}
-
-.auth-intro h1 {
-  font-size: clamp(40px, 5vw, 78px);
-  font-weight: 900;
-  letter-spacing: -3px;
-  margin: 20px 0;
-}
-
-.auth-intro h1 span {
-  color: var(--green);
-}
-
-.auth-intro p {
-  color: #cbd5e1;
-  max-width: 450px;
-}
-
-.auth-stats {
-  display: flex;
-  gap: 45px;
-}
-
-.auth-stats strong {
-  display: block;
-  font-size: 28px;
-}
-
-.auth-stats small {
-  color: var(--muted);
-}
-
-.auth-panel {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 35px;
-}
-
-.auth-card {
-  width: 100%;
-  max-width: 410px;
-  animation: fadeIn .6s ease;
-}
-
-.auth-card h2 {
-  font-size: 38px;
-  margin: 15px 0 8px;
-  letter-spacing: -1.5px;
-}
-
-.auth-card > p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.auth-tabs {
-  display: flex;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 5px;
-  margin: 30px 0;
-}
-
-.auth-tabs button {
-  flex: 1;
-  padding: 12px;
-  border-radius: 8px;
-  color: var(--muted);
-  background: transparent;
-  font-weight: 600;
-}
-
-.auth-tabs button.active {
-  background: var(--green);
-  color: #041810;
-}
-
-label {
-  display: block;
-  font-size: 13px;
-  font-weight: 600;
-  margin: 16px 0 7px;
-}
-
-input, select {
-  width: 100%;
-  background: var(--surface);
-  color: var(--white);
-  border: 1px solid var(--border);
-  border-radius: 11px;
-  padding: 13px 15px;
-  outline: none;
-  transition: border .2s;
-  color-scheme: dark;
-}
-
-input:focus, select:focus {
-  border-color: var(--green);
-}
-
-.password-field {
-  position: relative;
-}
-
-.password-field input {
-  padding-right: 45px;
-}
-
-.password-field button {
-  position: absolute;
-  right: 15px;
-  top: 13px;
-  background: transparent;
-  color: var(--muted);
-}
-
-.demo-note {
-  padding: 13px;
-  background: #10b9810c;
-  border: 1px solid #10b98130;
-  border-radius: 10px;
-  font-size: 12px;
-  color: var(--muted);
-  margin-top: 20px;
-}
-
-.error {
-  color: #f87171;
-  font-size: 13px;
-  margin-top: 10px;
-}
-
-/* NAVIGATION */
-
-.navbar {
-  position: sticky;
-  top: 0;
-  z-index: 50;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 18px 6%;
-  background: #090e13ed;
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-}
-
-.nav-links {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-links a {
-  font-size: 14px;
-  color: var(--muted);
-  font-weight: 600;
-}
-
-.nav-links a:hover {
-  color: var(--green);
-}
-
-.nav-user {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  font-size: 13px;
-}
-
-/* HERO */
-
-.hero {
-  min-height: 510px;
-  display: flex;
-  align-items: center;
-  padding: 70px 8%;
-  background:
-    linear-gradient(90deg, #090e13f5, #090e1366),
-    linear-gradient(0deg, #090e13, transparent 50%),
-    url('https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=1800&q=85')
-    center/cover;
-}
-
-.hero-content {
-  max-width: 800px;
-  animation: fadeIn .7s ease;
-}
-
-.hero h1 {
-  font-size: clamp(38px, 5.5vw, 76px);
-  letter-spacing: -3px;
-  font-weight: 900;
-  margin: 18px 0;
-}
-
-.hero h1 span {
-  color: var(--green);
-}
-
-.hero p {
-  color: #cbd5e1;
-  max-width: 530px;
-  margin-bottom: 30px;
-}
-
-/* CONTENU */
-
-.container {
-  max-width: 1400px;
-  margin: auto;
-  padding: 0 5%;
-}
-
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 18px;
-  margin: 0 0 70px;
-}
-
-.stat {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  padding: 25px;
-  border-radius: 16px;
-}
-
-.stat i {
-  color: var(--green);
-  font-size: 22px;
-  margin-bottom: 15px;
-}
-
-.stat strong {
-  display: block;
-  font-size: 27px;
-}
-
-.stat span {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-section {
-  scroll-margin-top: 100px;
-}
-
-.section-heading {
-  margin-bottom: 28px;
-}
-
-.section-heading h2 {
-  font-size: clamp(26px, 4vw, 38px);
-  letter-spacing: -1.5px;
-  margin: 10px 0;
-}
-
-.section-heading p {
-  color: var(--muted);
-  font-size: 14px;
-}
-
-.filters {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 12px;
-  margin-bottom: 20px;
-}
-
-.search {
-  position: relative;
-}
-
-.search i {
-  position: absolute;
-  top: 17px;
-  left: 15px;
-  color: var(--muted);
-}
-
-.search input {
-  padding-left: 42px;
-}
-
-/* CARTES DES TERRAINS */
-
-.terrains-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 22px;
-  margin-top: 22px;
-}
-
-.terrain-card {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  overflow: hidden;
-  transition: transform .3s, border-color .3s;
-  animation: fadeIn .4s ease;
-}
-
-.terrain-card:hover {
-  transform: translateY(-6px);
-  border-color: var(--green);
-}
-
-.terrain-image {
-  height: 190px;
-  background-size: cover;
-  background-position: center;
-  position: relative;
-}
-
-.terrain-image::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(transparent, #0005);
-}
-
-.terrain-tag {
-  position: absolute;
-  z-index: 1;
-  top: 12px;
-  left: 12px;
-  background: #090e13dd;
-  backdrop-filter: blur(10px);
-  border: 1px solid #ffffff20;
-  color: white;
-  padding: 5px 11px;
-  border-radius: 7px;
-  font-size: 11px;
-  font-weight: 700;
-}
-
-.terrain-body {
-  padding: 18px;
-}
-
-.terrain-body h3 {
-  font-size: 17px;
-  margin: 10px 0;
-}
-
-.terrain-location {
-  color: var(--muted);
-  font-size: 12px;
-}
-
-.terrain-location i {
-  color: var(--green);
-}
-
-.terrain-details {
-  display: flex;
-  gap: 12px;
-  color: var(--muted);
-  font-size: 12px;
-  margin: 15px 0;
-}
-
-.terrain-bottom {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  border-top: 1px solid var(--border);
-  padding-top: 15px;
-  gap: 8px;
-}
-
-.price strong {
-  font-size: 23px;
-}
-
-.price small {
-  color: var(--muted);
-  font-size: 10px;
-}
-
-.terrain-bottom .btn {
-  padding: 10px 13px;
-  font-size: 12px;
-}
-
-/* RESERVATIONS */
-
-#reservations {
-  margin: 80px 0;
-}
-
-.empty {
-  padding: 45px 20px;
-  text-align: center;
-  color: var(--muted);
-  background: var(--surface);
-  border: 1px dashed var(--border);
-  border-radius: 15px;
-}
-
-.empty i {
-  display: block;
-  font-size: 30px;
-  margin-bottom: 15px;
-}
-
-.booking-item {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 22px;
-  margin-bottom: 15px;
-}
-
-.booking-item h3 {
-  margin-bottom: 7px;
-}
-
-.booking-item p {
-  font-size: 13px;
-  color: var(--muted);
-}
-
-.booking-status {
-  color: var(--green);
-  font-size: 12px;
-  font-weight: 700;
-}
-
-.cancel-btn {
-  background: #ef444415;
-  color: #f87171;
-  padding: 9px 13px;
-  border-radius: 8px;
-}
-
-/* MODAL */
-
-.modal {
-  position: fixed;
-  inset: 0;
-  z-index: 100;
-  background: #000b;
-  backdrop-filter: blur(12px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  padding: 20px;
-}
-
-.modal-card {
-  width: 100%;
-  max-width: 470px;
-  max-height: 92vh;
-  overflow-y: auto;
-  background: #111a22;
-  border: 1px solid var(--border);
-  border-radius: 24px;
-  padding: 30px;
-  position: relative;
-  box-shadow: 0 30px 100px #0008;
-  animation: fadeIn .25s ease;
-}
-
-.modal-card h2 {
-  font-size: 26px;
-  margin: 12px 0;
-}
-
-.close {
-  position: absolute;
-  right: 18px;
-  top: 12px;
-  font-size: 30px;
-  color: var(--muted);
-  background: transparent;
-}
-
-.total-box {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: #10b98110;
-  border: 1px solid #10b98140;
-  border-radius: 12px;
-  padding: 18px;
-  margin-top: 20px;
-}
-
-.total-box strong {
-  color: var(--green);
-  font-size: 26px;
-}
-
-.summary {
-  padding: 20px;
-  background: var(--bg);
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  margin: 20px 0;
-  line-height: 2;
-  font-size: 14px;
-}
-
-.success-step {
-  text-align: center;
-}
-
-.success-icon {
-  display: grid;
-  place-items: center;
-  margin: 10px auto 20px;
-  width: 80px;
-  height: 80px;
-  background: #10b98120;
-  color: var(--green);
-  border-radius: 50%;
-  font-size: 34px;
-}
-
-.toast {
-  position: fixed;
-  bottom: 25px;
-  right: 25px;
-  z-index: 200;
-  background: var(--green);
-  color: #041810;
-  padding: 15px 22px;
-  border-radius: 12px;
-  font-weight: 700;
-  box-shadow: 0 10px 30px #0005;
-}
-
-footer {
-  padding: 45px 20px;
-  border-top: 1px solid var(--border);
-  text-align: center;
-  color: var(--muted);
-  font-size: 13px;
-}
-
-footer .brand {
-  justify-content: center;
-  color: white;
-  margin-bottom: 15px;
-}
-
-footer p {
-  margin: 7px 0;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+// PARIS FOOT BOOKING
+// Projet scolaire - version de démonstration
+
+const $ = id => document.getElementById(id);
+
+let registerMode = false;
+let currentUser = null;
+let selectedTerrain = null;
+let pendingBooking = null;
+
+// STOCKAGE LOCAL
+
+function readStorage(key, fallback) {
+  try {
+    return JSON.parse(localStorage.getItem(key)) ?? fallback;
+  } catch {
+    return fallback;
   }
 }
 
-/* RESPONSIVE */
-
-@media (max-width: 1100px) {
-  .terrains-grid {
-    grid-template-columns: repeat(3, 1fr);
-  }
+function saveStorage(key, value) {
+  localStorage.setItem(key, JSON.stringify(value));
 }
 
-@media (max-width: 850px) {
-  .auth-page {
-    grid-template-columns: 1fr;
-  }
-
-  .auth-visual {
-    min-height: 320px;
-    padding: 30px;
-    gap: 25px;
-  }
-
-  .auth-stats {
-    display: none;
-  }
-
-  .auth-panel {
-    padding: 40px 25px;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .terrains-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .stats-grid, .filters {
-    grid-template-columns: repeat(2, 1fr);
-  }
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;'
+  })[char]);
 }
 
-@media (max-width: 520px) {
-  .navbar {
-    padding: 15px;
-  }
-
-  .brand {
-    font-size: 19px;
-  }
-
-  .nav-user span {
-    display: none;
-  }
-
-  .hero {
-    min-height: 430px;
-    padding: 45px 20px;
-  }
-
-  .hero h1 {
-    letter-spacing: -2px;
-  }
-
-  .terrains-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .filters {
-    grid-template-columns: 1fr;
-  }
-
-  .stat {
-    padding: 17px;
-  }
-
-  .stat strong {
-    font-size: 23px;
-  }
-
-  .booking-item {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .modal-card {
-    padding: 23px;
-  }
+function money(value) {
+  return new Intl.NumberFormat('fr-FR', {
+    style: 'currency',
+    currency: 'EUR'
+  }).format(value);
 }
 
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
+function localDate() {
+  const date = new Date();
+
+  return [
+    date.getFullYear(),
+    String(date.getMonth() + 1).padStart(2, '0'),
+    String(date.getDate()).padStart(2, '0')
+  ].join('-');
+}
+
+// AUTHENTIFICATION DE DEMONSTRATION
+
+async function hashPassword(password, salt) {
+  const data = new TextEncoder().encode(salt + password);
+  const hash = await crypto.subtle.digest('SHA-256', data);
+
+  return Array.from(new Uint8Array(hash))
+    .map(byte => byte.toString(16).padStart(2, '0'))
+    .join('');
+}
+
+function switchAuth(register) {
+  registerMode = register;
+
+  $('nameField').hidden = !register;
+  $('fullName').required = register;
+
+  $('loginTab').classList.toggle('active', !register);
+  $('registerTab').classList.toggle('active', register);
+
+  $('authTitle').textContent = register
+    ? 'Rejoignez le jeu.'
+    : 'Bon retour.';
+
+  $('authSubtitle').textContent = register
+    ? 'Créez votre compte de démonstration.'
+    : 'Connectez-vous pour accéder à votre espace.';
+
+  $('authSubmit').textContent = register
+    ? "S'inscrire"
+    : 'Se connecter';
+
+  $('authError').textContent = '';
+}
+
+function togglePassword() {
+  const input = $('password');
+
+  input.type = input.type === 'password'
+    ? 'text'
+    : 'password';
+}
+
+$('authForm').addEventListener('submit', async event => {
+  event.preventDefault();
+
+  const email = $('email').value.trim().toLowerCase();
+  const password = $('password').value;
+  const name = $('fullName').value.trim();
+
+  const users = readStorage('pfb_users', []);
+
+  $('authError').textContent = '';
+  $('authSubmit').disabled = true;
+
+  try {
+    if (registerMode) {
+
+      if (!name) {
+        throw new Error('Veuillez saisir votre nom.');
+      }
+
+      if (users.some(user => user.email === email)) {
+        throw new Error('Ce compte existe déjà.');
+      }
+
+      const salt = crypto.randomUUID();
+
+      const user = {
+        id: crypto.randomUUID(),
+        name,
+        email,
+        salt,
+        passwordHash: await hashPassword(password, salt)
+      };
+
+      users.push(user);
+
+      saveStorage('pfb_users', users);
+
+      loginUser(user);
+
+    } else {
+
+      const user = users.find(item => item.email === email);
+
+      if (!user) {
+        throw new Error('Compte introuvable. Inscrivez-vous.');
+      }
+
+      const hash = await hashPassword(password, user.salt);
+
+      if (hash !== user.passwordHash) {
+        throw new Error('Mot de passe incorrect.');
+      }
+
+      loginUser(user);
+    }
+
+  } catch (error) {
+    $('authError').textContent = error.message;
+  } finally {
+    $('authSubmit').disabled = false;
   }
+});
+
+function loginUser(user) {
+  currentUser = {
+    id: user.id,
+    name: user.name,
+    email: user.email
+  };
+
+  sessionStorage.setItem(
+    'pfb_session',
+    JSON.stringify(currentUser)
+  );
+
+  $('authPage').hidden = true;
+  $('app').hidden = false;
+  $('userDisplay').textContent = currentUser.name;
+  $('password').value = '';
+
+  renderTerrains();
+  renderBookings();
+
+  window.scrollTo(0, 0);
+}
+
+function logout() {
+  sessionStorage.removeItem('pfb_session');
+
+  currentUser = null;
+  pendingBooking = null;
+
+  closeBooking();
+
+  $('app').hidden = true;
+  $('authPage').hidden = false;
+
+  $('authForm').reset();
+
+  switchAuth(false);
+  window.scrollTo(0, 0);
+}
+
+// BASE DE TERRAINS FICTIFS
+
+const images = [
+  'https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80',
+  'https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=800&q=80'
+];
+
+const cities = [
+  'Paris',
+  'Noisiel',
+  'Torcy',
+  'Lognes',
+  'Créteil',
+  'Chelles',
+  'Saint-Denis',
+  'Boulogne-Billancourt'
+];
+
+const complexNames = [
+  'Elite Football Arena',
+  'Green Five Club',
+  'Urban Football Park',
+  'Premium Foot Center'
+];
+
+const terrains = [];
+
+cities.forEach((city, cityIndex) => {
+  complexNames.forEach((name, index) => {
+
+    terrains.push({
+      id: cityIndex * 4 + index + 1,
+      name: name + ' ' + city,
+      city,
+      type: index % 2 === 0 ? 'Indoor' : 'Outdoor',
+      format: index % 2 === 0 ? '5v5' : '7v7',
+      maxPlayers: index % 2 === 0 ? 10 : 14,
+      price: 8 + ((cityIndex * 3 + index * 2) % 11),
+      image: images[(cityIndex + index) % images.length]
+    });
+
+  });
+});
+
+// FILTRES
+
+cities.forEach(city => {
+  const option = document.createElement('option');
+
+  option.value = city;
+  option.textContent = city;
+
+  $('cityFilter').appendChild(option);
+});
+
+function renderTerrains() {
+
+  const search = $('searchInput').value.toLowerCase().trim();
+  const city = $('cityFilter').value;
+  const type = $('typeFilter').value;
+  const price = Number($('priceFilter').value);
+
+  const filtered = terrains.filter(terrain => {
+
+    const matchesSearch =
+      (terrain.name + ' ' + terrain.city)
+      .toLowerCase()
+      .includes(search);
+
+    return matchesSearch
+      && (!city || terrain.city === city)
+      && (!type || terrain.type === type)
+      && (!price || terrain.price <= price);
+
+  });
+
+  $('resultCount').textContent =
+    `${filtered.length} terrain(s) de démonstration`;
+
+  if (!filtered.length) {
+    $('terrainsGrid').innerHTML = `
+      <div class="empty">
+        <i class="fa-solid fa-magnifying-glass"></i>
+        Aucun terrain trouvé.
+      </div>
+    `;
+    return;
+  }
+
+  $('terrainsGrid').innerHTML = filtered.map(terrain => `
+
+    <article class="terrain-card">
+
+      <div class="terrain-image"
+        style="background-image:url('${terrain.image}')">
+
+        <span class="terrain-tag">
+          ${terrain.type} · Démo
+        </span>
+
+      </div>
+
+      <div class="terrain-body">
+
+        <p class="terrain-location">
+          <i class="fa-solid fa-location-dot"></i>
+          ${escapeHTML(terrain.city)}
+        </p>
+
+        <h3>${escapeHTML(terrain.name)}</h3>
+
+        <div class="terrain-details">
+
+          <span>
+            <i class="fa-solid fa-users"></i>
+            ${terrain.format}
+          </span>
+
+          <span>
+            <i class="fa-solid fa-clock"></i>
+            Dès 1 heure
+          </span>
+
+        </div>
+
+        <div class="terrain-bottom">
+
+          <div class="price">
+            <strong>${terrain.price} €</strong>
+            <small>/ pers / h</small>
+          </div>
+
+          <button class="btn primary"
+            onclick="openBooking(${terrain.id})">
+
+            Réserver
+            <i class="fa-solid fa-arrow-right"></i>
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </article>
+
+  `).join('');
+}
+
+// RESERVATION
+
+function openBooking(id) {
+
+  if (!currentUser) return;
+
+  selectedTerrain = terrains.find(terrain => terrain.id === id);
+
+  if (!selectedTerrain) return;
+
+  pendingBooking = null;
+
+  $('selectedTerrain').textContent = selectedTerrain.name;
+
+  $('selectedLocation').textContent =
+    `${selectedTerrain.city} · ${selectedTerrain.format}`;
+
+  $('bookDate').min = localDate();
+  $('bookDate').value = localDate();
+
+  $('playerCount').max = selectedTerrain.maxPlayers;
+  $('playerCount').value = selectedTerrain.maxPlayers;
+
+  $('duration').value = '1';
+  $('bookingError').textContent = '';
+
+  $('bookingStep').hidden = false;
+  $('paymentStep').hidden = true;
+  $('successStep').hidden = true;
+
+  $('bookingModal').hidden = false;
+
+  document.body.style.overflow = 'hidden';
+
+  updateTotal();
+}
+
+function closeBooking() {
+
+  $('bookingModal').hidden = true;
+
+  document.body.style.overflow = '';
+
+  pendingBooking = null;
+}
+
+function updateTotal() {
+
+  if (!selectedTerrain) return;
+
+  const players = Number($('playerCount').value) || 1;
+  const duration = Number($('duration').value);
+
+  const total = players * duration * selectedTerrain.price;
+
+  $('totalAmount').textContent = money(total);
+}
+
+function getBookings() {
+  return readStorage('pfb_bookings', []);
+}
+
+function isSlotTaken(booking) {
+
+  const start = new Date(
+    `${booking.date}T${booking.time}`
+  ).getTime();
+
+  const end = start + booking.duration * 3600000;
+
+  return getBookings().some(item => {
+
+    if (
+      item.terrainId !== booking.terrainId ||
+      item.status === 'cancelled'
+    ) {
+      return false;
+    }
+
+    const itemStart = new Date(
+      `${item.date}T${item.time}`
+    ).getTime();
+
+    const itemEnd =
+      itemStart + item.duration * 3600000;
+
+    return start < itemEnd && end > itemStart;
+
+  });
+}
+
+$('bookingForm').addEventListener('submit', event => {
+
+  event.preventDefault();
+
+  if (!selectedTerrain || !currentUser) return;
+
+  const date = $('bookDate').value;
+  const time = $('bookTime').value;
+  const players = Number($('playerCount').value);
+  const duration = Number($('duration').value);
+
+  const matchDate = new Date(`${date}T${time}`);
+
+  $('bookingError').textContent = '';
+
+  if (
+    !Number.isFinite(matchDate.getTime()) ||
+    matchDate <= new Date()
+  ) {
+    $('bookingError').textContent =
+      'Veuillez choisir un créneau futur.';
+    return;
+  }
+
+  if (
+    !Number.isInteger(players) ||
+    players < 1 ||
+    players > selectedTerrain.maxPlayers
+  ) {
+    $('bookingError').textContent =
+      'Nombre de joueurs incorrect.';
+    return;
+  }
+
+  if (![1, 1.5, 2].includes(duration)) return;
+
+  pendingBooking = {
+    id: 'PFB-' + crypto.randomUUID().slice(0, 8).toUpperCase(),
+    userId: currentUser.id,
+    terrainId: selectedTerrain.id,
+    terrain: selectedTerrain.name,
+    city: selectedTerrain.city,
+    date,
+    time,
+    players,
+    duration,
+    total: players * duration * selectedTerrain.price,
+    status: 'confirmed'
+  };
+
+  if (isSlotTaken(pendingBooking)) {
+
+    $('bookingError').textContent =
+      'Ce créneau est déjà réservé sur cet appareil.';
+
+    pendingBooking = null;
+
+    return;
+  }
+
+  $('paymentSummary').innerHTML = `
+
+    <strong>${escapeHTML(pendingBooking.terrain)}</strong>
+    <br>
+
+    Date : ${escapeHTML(date)}<br>
+    Heure : ${escapeHTML(time)}<br>
+    Joueurs : ${players}<br>
+    Durée : ${duration} h<br>
+
+    <strong>Total : ${money(pendingBooking.total)}</strong>
+
+  `;
+
+  $('bookingStep').hidden = true;
+  $('paymentStep').hidden = false;
+
+});
+
+function backToBooking() {
+
+  $('paymentStep').hidden = true;
+  $('bookingStep').hidden = false;
+
+}
+
+// PAIEMENT FICTIF
+
+function confirmBooking() {
+
+  if (!pendingBooking || !currentUser) return;
+
+  if (isSlotTaken(pendingBooking)) {
+
+    backToBooking();
+
+    $('bookingError').textContent =
+      'Ce créneau est désormais indisponible.';
+
+    return;
+  }
+
+  const booking = { ...pendingBooking };
+
+  const bookings = getBookings();
+
+  bookings.unshift(booking);
+
+  saveStorage('pfb_bookings', bookings);
+
+  pendingBooking = null;
+
+  $('paymentStep').hidden = true;
+  $('successStep').hidden = false;
+
+  $('ticket').innerHTML = `
+
+    <strong>${escapeHTML(booking.id)}</strong><br>
+
+    ${escapeHTML(booking.terrain)}<br>
+
+    ${escapeHTML(booking.date)} à
+    ${escapeHTML(booking.time)}<br>
+
+    ${booking.players} joueurs<br>
+
+    ${money(booking.total)}<br>
+
+    Paiement simulé
+
+  `;
+
+  renderBookings();
+
+  showToast('Réservation de démonstration confirmée !');
+
+}
+
+// HISTORIQUE
+
+function renderBookings() {
+
+  if (!currentUser) return;
+
+  const bookings = getBookings().filter(
+    item => item.userId === currentUser.id
+  );
+
+  if (!bookings.length) {
+
+    $('bookingsList').innerHTML = `
+
+      <div class="empty">
+
+        <i class="fa-regular fa-calendar"></i>
+
+        <h3>Aucune réservation</h3>
+
+        <p>Votre prochain match vous attend.</p>
+
+      </div>
+
+    `;
+
+    return;
+  }
+
+  $('bookingsList').innerHTML = bookings.map(booking => `
+
+    <div class="booking-item">
+
+      <div>
+
+        <span class="booking-status">
+          ${booking.status === 'cancelled'
+            ? 'ANNULÉE'
+            : 'CONFIRMÉE · DÉMO'}
+        </span>
+
+        <h3>${escapeHTML(booking.terrain)}</h3>
+
+        <p>
+          ${escapeHTML(booking.date)} à
+          ${escapeHTML(booking.time)}
+          · ${booking.players} joueurs
+          · ${booking.duration} h
+        </p>
+
+        <p>Ticket : ${escapeHTML(booking.id)}</p>
+
+      </div>
+
+      <div>
+        <strong>${money(booking.total)}</strong>
+      </div>
+
+      ${booking.status !== 'cancelled' ? `
+
+        <button class="cancel-btn"
+          data-booking-id="${escapeHTML(booking.id)}">
+
+          Annuler
+
+        </button>
+
+      ` : ''}
+
+    </div>
+
+  `).join('');
+
+  $('bookingsList')
+    .querySelectorAll('[data-booking-id]')
+    .forEach(button => {
+
+      button.addEventListener('click', () => {
+        cancelBooking(button.dataset.bookingId);
+      });
+
+    });
+
+}
+
+function cancelBooking(id) {
+
+  if (!currentUser) return;
+
+  if (!confirm('Annuler cette réservation ?')) return;
+
+  const bookings = getBookings();
+
+  const booking = bookings.find(item =>
+    item.id === id &&
+    item.userId === currentUser.id
+  );
+
+  if (!booking) return;
+
+  booking.status = 'cancelled';
+
+  saveStorage('pfb_bookings', bookings);
+
+  renderBookings();
+
+  showToast('Réservation annulée.');
+
+}
+
+// NOTIFICATIONS
+
+let toastTimer;
+
+function showToast(message) {
+
+  clearTimeout(toastTimer);
+
+  $('toast').textContent = message;
+  $('toast').hidden = false;
+
+  toastTimer = setTimeout(() => {
+    $('toast').hidden = true;
+  }, 3500);
+
+}
+
+// FERMETURE DU MODAL
+
+$('bookingModal').addEventListener('click', event => {
+
+  if (event.target === $('bookingModal')) {
+    closeBooking();
+  }
+
+});
+
+document.addEventListener('keydown', event => {
+
+  if (event.key === 'Escape') {
+    closeBooking();
+  }
+
+});
+
+// RESTAURATION DE LA SESSION LOCALE
+
+try {
+
+  const session = JSON.parse(
+    sessionStorage.getItem('pfb_session')
+  );
+
+  const users = readStorage('pfb_users', []);
+
+  if (session) {
+
+    const user = users.find(item =>
+      item.id === session.id
+    );
+
+    if (user) {
+      loginUser(user);
+    }
+
+  }
+
+} catch {
+
+  sessionStorage.removeItem('pfb_session');
+
 }
