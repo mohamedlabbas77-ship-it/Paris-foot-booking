@@ -1,210 +1,325 @@
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Paris Foot Booking ⚽ | Réservez vos terrains</title>
+  <title>Paris Foot Booking — Réservez. Jouez. Profitez.</title>
   <link rel="stylesheet" href="style.css">
-  <!-- FontAwesome للرموز الأنيقة -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
 </head>
+
 <body>
 
-  <!-- Header & Hero Section -->
-  <header class="hero">
-    <div class="hero-overlay">
-      <nav class="navbar">
-        <div class="logo"><i class="fa-solid fa-circle-play"></i> PARIS <span>FOOT</span></div>
-        <div class="nav-links">
-          <a href="#terrains">Terrains</a>
-          <a href="#my-bookings">Mes Réservations</a>
+  <!-- AUTHENTIFICATION -->
+  <section id="authPage" class="auth-page">
+
+    <div class="auth-visual">
+      <div class="auth-brand">
+        <i class="fa-solid fa-futbol"></i>
+        PARIS<span>FOOT</span>
+      </div>
+
+      <div class="auth-intro">
+        <span class="eyebrow">LE FOOTBALL AUTREMENT</span>
+        <h1>Votre terrain.<br><span>Votre moment.</span></h1>
+        <p>Retrouvez vos amis, réservez votre terrain et vivez votre passion.</p>
+      </div>
+
+      <div class="auth-stats">
+        <div><strong>32</strong><small>Terrains démo</small></div>
+        <div><strong>8</strong><small>Villes</small></div>
+        <div><strong>24/7</strong><small>Plateforme</small></div>
+      </div>
+    </div>
+
+    <div class="auth-panel">
+      <div class="auth-card">
+
+        <span class="eyebrow">PARIS FOOT BOOKING</span>
+        <h2 id="authTitle">Bon retour.</h2>
+        <p id="authSubtitle">Connectez-vous pour accéder à votre espace.</p>
+
+        <div class="auth-tabs">
+          <button id="loginTab" class="active" onclick="switchAuth(false)">Connexion</button>
+          <button id="registerTab" onclick="switchAuth(true)">Inscription</button>
         </div>
-      </nav>
+
+        <form id="authForm">
+
+          <div id="nameField" hidden>
+            <label>Nom complet</label>
+            <input id="fullName" type="text" placeholder="Votre nom">
+          </div>
+
+          <label>Adresse e-mail de démonstration</label>
+          <input id="email" type="email" placeholder="exemple@example.com" required>
+
+          <label>Mot de passe de démonstration</label>
+          <div class="password-field">
+            <input id="password" type="password" placeholder="6 caractères minimum" minlength="6" required>
+            <button type="button" onclick="togglePassword()">
+              <i class="fa-regular fa-eye"></i>
+            </button>
+          </div>
+
+          <p id="authError" class="error"></p>
+
+          <button class="btn primary full" id="authSubmit" type="submit">
+            Se connecter <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
+        </form>
+
+        <p class="demo-note">
+          Projet scolaire — comptes locaux de démonstration.
+          N'utilisez pas votre véritable mot de passe.
+        </p>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- APPLICATION -->
+  <div id="app" hidden>
+
+    <nav class="navbar">
+
+      <a class="brand" href="#home">
+        <i class="fa-solid fa-futbol"></i>
+        PARIS<span>FOOT</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#home">Accueil</a>
+        <a href="#terrains">Terrains</a>
+        <a href="#reservations">Mes réservations</a>
+      </div>
+
+      <div class="nav-user">
+        <span id="userDisplay"></span>
+        <button class="btn outline" onclick="logout()">
+          <i class="fa-solid fa-right-from-bracket"></i>
+        </button>
+      </div>
+
+    </nav>
+
+    <!-- ACCUEIL -->
+    <header id="home" class="hero">
       <div class="hero-content">
-        <h1>Réservez votre terrain de foot à Paris ⚽</h1>
-        <p>Plus de 10 complexes disponibles. Réservez en 2 minutes avec confirmation immédiate.</p>
-        
-        <!-- Search Bar -->
-        <div class="search-bar">
-          <i class="fa-solid fa-magnifying-glass"></i>
-          <input type="text" id="searchInput" onkeyup="filterTerrains()" placeholder="Rechercher un terrain ou un arrondissement...">
+        <span class="eyebrow">PARIS & ÎLE-DE-FRANCE</span>
+
+        <h1>Le terrain est à vous.<br><span>À vous de jouer.</span></h1>
+
+        <p>Découvrez votre prochain terrain de football et organisez votre match en quelques clics.</p>
+
+        <a href="#terrains" class="btn primary">
+          Explorer les terrains
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+      </div>
+    </header>
+
+    <main class="container">
+
+      <div class="stats-grid">
+        <div class="stat">
+          <i class="fa-solid fa-futbol"></i>
+          <strong>32</strong>
+          <span>Terrains de démonstration</span>
+        </div>
+
+        <div class="stat">
+          <i class="fa-solid fa-location-dot"></i>
+          <strong>8</strong>
+          <span>Villes couvertes</span>
+        </div>
+
+        <div class="stat">
+          <i class="fa-solid fa-clock"></i>
+          <strong>24/7</strong>
+          <span>Accès à la plateforme</span>
+        </div>
+
+        <div class="stat">
+          <i class="fa-solid fa-shield-halved"></i>
+          <strong>Démo</strong>
+          <span>Paiement simulé</span>
         </div>
       </div>
-    </div>
-  </header>
 
-  <main class="container">
-    <h2 class="section-title">Terrains Disponibles</h2>
+      <!-- TERRAINS -->
+      <section id="terrains">
 
-    <!-- Terrains Grid -->
-    <div class="terrains-grid" id="terrainsGrid">
-
-      <!-- Card 1 -->
-      <div class="card" data-name="urban soccer paris 13" data-price="10">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1529900748604-07564a03e7a6?auto=format&fit=crop&w=800&q=80');">
-          <span class="badge popular">Populaire 🔥</span>
+        <div class="section-heading">
+          <span class="eyebrow">TROUVEZ VOTRE TERRAIN</span>
+          <h2>Explorez les complexes</h2>
+          <p>Choisissez le terrain idéal pour votre prochain match.</p>
         </div>
-        <div class="card-body">
-          <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (120 avis)</div>
-          <h3>Urban Soccer Paris 13</h3>
-          <p class="location"><i class="fa-solid fa-location-dot"></i> Paris 13ème • Indoor 5v5</p>
-          <div class="card-footer-info">
-            <span class="price"><b>10 €</b> / pers</span>
-            <button class="btn-primary" onclick="openBookingModal('Urban Soccer Paris 13', 10)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
+
+        <div class="filters">
+
+          <div class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input id="searchInput" placeholder="Rechercher un terrain..." oninput="renderTerrains()">
           </div>
+
+          <select id="cityFilter" onchange="renderTerrains()">
+            <option value="">Toutes les villes</option>
+          </select>
+
+          <select id="typeFilter" onchange="renderTerrains()">
+            <option value="">Tous les types</option>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+          </select>
+
+          <select id="priceFilter" onchange="renderTerrains()">
+            <option value="">Tous les prix</option>
+            <option value="10">10 € maximum</option>
+            <option value="15">15 € maximum</option>
+            <option value="20">20 € maximum</option>
+          </select>
+
         </div>
+
+        <p id="resultCount" class="muted"></p>
+
+        <div id="terrainsGrid" class="terrains-grid"></div>
+
+      </section>
+
+      <!-- RESERVATIONS -->
+      <section id="reservations">
+
+        <div class="section-heading">
+          <span class="eyebrow">VOTRE ESPACE</span>
+          <h2>Mes réservations</h2>
+          <p>Retrouvez et gérez vos prochains matchs.</p>
+        </div>
+
+        <div id="bookingsList"></div>
+
+      </section>
+
+    </main>
+
+    <footer>
+      <div class="brand">
+        <i class="fa-solid fa-futbol"></i>
+        PARIS<span>FOOT</span>
       </div>
 
-      <!-- Card 2 -->
-      <div class="card" data-name="football center 19" data-price="12">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1575361204480-aadea25e6e68?auto=format&fit=crop&w=800&q=80');">
-          <span class="badge premium">Synthétique HD ✨</span>
-        </div>
-        <div class="card-body">
-          <div class="rating"><i class="fa-solid fa-star"></i> 4.8 (85 avis)</div>
-          <h3>Football Center Paris 19</h3>
-          <p class="location"><i class="fa-solid fa-location-dot"></i> Paris 19ème • Outdoor 7v7</p>
-          <div class="card-footer-info">
-            <span class="price"><b>12 €</b> / pers</span>
-            <button class="btn-primary" onclick="openBookingModal('Football Center Paris 19', 12)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
-          </div>
-        </div>
-      </div>
+      <p>Réservez. Jouez. Profitez.</p>
+      <p>© 2026 Paris Foot Booking — Projet scolaire CIEL.</p>
+      <small>Terrains, tarifs et réservations fictifs.</small>
+    </footer>
 
-      <!-- Card 3 -->
-      <div class="card" data-name="le temple du foot bercy" data-price="11">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1508098682722-e99c43a406b2?auto=format&fit=crop&w=800&q=80');">
-          <span class="badge">Couvert 🌧️</span>
-        </div>
-        <div class="card-body">
-          <div class="rating"><i class="fa-solid fa-star"></i> 4.7 (94 avis)</div>
-          <h3>Le Temple du Foot Bercy</h3>
-          <p class="location"><i class="fa-solid fa-location-dot"></i> Paris 12ème • Indoor 5v5</p>
-          <div class="card-footer-info">
-            <span class="price"><b>11 €</b> / pers</span>
-            <button class="btn-primary" onclick="openBookingModal('Le Temple du Foot Bercy', 11)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
-          </div>
-        </div>
-      </div>
+  </div>
 
-      <!-- Card 4 -->
-      <div class="card" data-name="five arena boulogne" data-price="14">
-        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1459865264687-595d652de67e?auto=format&fit=crop&w=800&q=80');">
-          <span class="badge popular">Climatisé ❄️</span>
-        </div>
-        <div class="card-body">
-          <div class="rating"><i class="fa-solid fa-star"></i> 4.9 (210 avis)</div>
-          <h3>Five Arena Boulogne</h3>
-          <p class="location"><i class="fa-solid fa-location-dot"></i> Boulogne-Billancourt • 5v5</p>
-          <div class="card-footer-info">
-            <span class="price"><b>14 €</b> / pers</span>
-            <button class="btn-primary" onclick="openBookingModal('Five Arena Boulogne', 14)">Réserver <i class="fa-solid fa-arrow-right"></i></button>
-          </div>
-        </div>
-      </div>
+  <!-- MODAL DE RESERVATION -->
+  <div id="bookingModal" class="modal" hidden>
 
-    </div>
-
-    <!-- Section Réservations Confirmées -->
-    <section id="my-bookings" class="bookings-section">
-      <h2><i class="fa-solid fa-ticket"></i> Mes Réservations Confirmées</h2>
-      <div id="bookingsList" class="bookings-list">
-        <p class="empty-msg">Aucune réservation pour le moment.</p>
-      </div>
-    </section>
-  </main>
-
-  <!-- MODAL DE RESERVATION & PAIEMENT -->
-  <div class="modal-overlay" id="bookingModal">
     <div class="modal-card">
-      <button class="modal-close" onclick="closeBookingModal()">&times;</button>
-      
-      <div id="modalStep1">
-        <h3><i class="fa-regular fa-calendar-check"></i> Réservation - <span id="modalTerrainName"></span></h3>
-        <p class="modal-sub">Remplissez les détails du match :</p>
-        
-        <form id="bookingForm" onsubmit="goToPayment(event)">
-          <div class="input-group">
-            <label><i class="fa-solid fa-user"></i> Nom complet</label>
-            <input type="text" id="userName" placeholder="Ex: Mohamed Lab" required>
-          </div>
 
-          <div class="form-row">
-            <div class="input-group">
-              <label><i class="fa-solid fa-calendar"></i> Date</label>
-              <input type="date" id="bookDate" required>
-            </div>
-            <div class="input-group">
-              <label><i class="fa-solid fa-clock"></i> Heure</label>
-              <select id="bookTime" required>
-                <option value="14:00">14:00</option>
-                <option value="16:00">16:00</option>
-                <option value="18:00">18:00</option>
-                <option value="20:00">20:00</option>
-                <option value="22:00">22:00</option>
-              </select>
-            </div>
-          </div>
+      <button class="close" onclick="closeBooking()">&times;</button>
 
-          <div class="input-group">
-            <label><i class="fa-solid fa-users"></i> Nombre de joueurs</label>
-            <input type="number" id="playerCount" value="10" min="1" max="14" oninput="updateTotalPrice()" required>
-          </div>
+      <div id="bookingStep">
+
+        <span class="eyebrow">VOTRE PROCHAIN MATCH</span>
+        <h2 id="selectedTerrain"></h2>
+        <p id="selectedLocation" class="muted"></p>
+
+        <form id="bookingForm">
+
+          <label>Date du match</label>
+          <input type="date" id="bookDate" required>
+
+          <label>Créneau horaire</label>
+          <select id="bookTime" required>
+            <option value="10:00">10:00</option>
+            <option value="12:00">12:00</option>
+            <option value="14:00">14:00</option>
+            <option value="16:00">16:00</option>
+            <option value="18:00">18:00</option>
+            <option value="20:00">20:00</option>
+            <option value="22:00">22:00</option>
+          </select>
+
+          <label>Nombre de joueurs</label>
+          <input type="number" id="playerCount" min="1" max="14" value="10" required oninput="updateTotal()">
+
+          <label>Durée du match</label>
+          <select id="duration" onchange="updateTotal()">
+            <option value="1">1 heure</option>
+            <option value="1.5">1 heure 30</option>
+            <option value="2">2 heures</option>
+          </select>
 
           <div class="total-box">
-            <span>Total à payer :</span>
+            <span>Total</span>
             <strong id="totalAmount">0 €</strong>
           </div>
 
-          <button type="submit" class="btn-primary btn-block">Passer au Paiement <i class="fa-solid fa-credit-card"></i></button>
+          <p id="bookingError" class="error"></p>
+
+          <button class="btn primary full" type="submit">
+            Continuer <i class="fa-solid fa-arrow-right"></i>
+          </button>
+
         </form>
+
       </div>
 
-      <!-- Step 2: Paiement -->
-      <div id="modalStep2" style="display: none;">
-        <h3><i class="fa-solid fa-lock"></i> Paiement Sécurisé</h3>
-        <p class="modal-sub">Montant : <strong id="payAmount"></strong></p>
+      <!-- PAIEMENT SIMULE -->
+      <div id="paymentStep" hidden>
 
-        <div class="payment-methods">
-          <label class="pay-option active">
-            <input type="radio" name="payMethod" value="cb" checked>
-            <i class="fa-solid fa-credit-card"></i> Carte Bancaire
-          </label>
-          <label class="pay-option">
-            <input type="radio" name="payMethod" value="apple">
-            <i class="fa-brands fa-apple"></i> Apple Pay
-          </label>
+        <span class="eyebrow">DERNIÈRE ÉTAPE</span>
+        <h2>Votre réservation</h2>
+
+        <div id="paymentSummary" class="summary"></div>
+
+        <div class="demo-note">
+          <i class="fa-solid fa-circle-info"></i>
+          Paiement de démonstration. Aucun argent ne sera débité.
         </div>
 
-        <form id="payForm" onsubmit="processPayment(event)">
-          <div class="input-group">
-            <label>Numéro de carte</label>
-            <input type="text" placeholder="4532 •••• •••• 8921" maxlength="19" required>
-          </div>
-          <div class="form-row">
-            <div class="input-group">
-              <label>Expire</label>
-              <input type="text" placeholder="MM/YY" maxlength="5" required>
-            </div>
-            <div class="input-group">
-              <label>CVC</label>
-              <input type="password" placeholder="123" maxlength="3" required>
-            </div>
-          </div>
+        <button id="payButton" class="btn primary full" onclick="confirmBooking()">
+          Simuler le paiement
+        </button>
 
-          <button type="submit" class="btn-success btn-block" id="payBtn">
-            Payer & Confirmer <i class="fa-solid fa-check-circle"></i>
-          </button>
-        </form>
+        <button class="btn outline full" onclick="backToBooking()">
+          Retour
+        </button>
+
+      </div>
+
+      <!-- CONFIRMATION -->
+      <div id="successStep" class="success-step" hidden>
+
+        <div class="success-icon">
+          <i class="fa-solid fa-check"></i>
+        </div>
+
+        <h2>Réservation simulée !</h2>
+        <p>Votre ticket de démonstration est disponible.</p>
+
+        <div id="ticket" class="summary"></div>
+
+        <button class="btn primary full" onclick="closeBooking()">
+          Terminer
+        </button>
+
       </div>
 
     </div>
   </div>
 
-  <footer>
-    <p>© 2026 Paris Foot Booking — Développé avec ❤️ pour les passionnés du ballon rond.</p>
-  </footer>
+  <div id="toast" class="toast" hidden></div>
 
   <script src="script.js"></script>
+
 </body>
 </html>
